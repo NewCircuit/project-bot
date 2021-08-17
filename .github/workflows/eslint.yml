@@ -1,0 +1,19 @@
+name: ESLint
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+  
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install modules
+      run: yarn
+    - name: Run ESLint
+      run: yarn run eslint . --ext .ts

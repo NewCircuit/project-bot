@@ -1,0 +1,34 @@
+{
+  "name": "bot-template",
+  "version": "1.0.0",
+  "description": "A discord bot template",
+  "main": "build/bot.js",
+  "repository": "git@github.com:NewCircuit/bot-template.git",
+  "author": "Matthew Bakhtiari <dev@mtbk.me>",
+  "license": "GPL-3.0",
+  "private": true,
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.2",
+    "@types/node": "^16.4.0",
+    "@types/pg": "^8.6.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.4",
+    "@typescript-eslint/parser": "^4.28.4",
+    "eslint": "^7.31.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "@sapphire/framework": "^1.0.2",
+    "discord.js": "^12.5.3",
+    "js-yaml": "^4.1.0",
+    "log4js": "^6.3.0",
+    "pg": "^8.6.0",
+    "postgres-migrations": "^5.3.0"
+  },
+  "scripts": {
+    "start": "node build/bot.js",
+    "build": "tsc",
+    "dev": "yarn build && yarn start"
+  }
+}

@@ -1,0 +1,13 @@
+---
+logLevel: 'INFO'
+bot:
+  token: ''
+  prefix: ''
+  owners: ['']
+database:
+  user: ''
+  password: ''
+  host: ''
+  port: 5432
+  database: ''
+  max: 20
