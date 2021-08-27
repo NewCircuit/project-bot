@@ -1,19 +1,27 @@
 import { SapphireClient } from '@sapphire/framework';
 import { CONFIG, LOGGER } from './globals';
-import * as utils from './utils';
 
-export const bot = new SapphireClient({
-  logger: {
-    instance: LOGGER,
-  },
-  defaultPrefix: CONFIG.bot.prefix,
-  id: CONFIG.bot.id,
-});
+import '@sapphire/plugin-logger/register';
+import '@sapphire/plugin-editable-commands/register';
 
-bot.once('ready', async () => {
-  bot.logger.info(`${bot?.user?.username} is online!`);
-});
+export default class Bot extends SapphireClient {
+  constructor() {
+    super({
+      intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_MESSAGE_REACTIONS', 'GUILD_MESSAGES'],
+      caseInsensitiveCommands: true,
+      logger: {
+        instance: LOGGER,
+      },
+      defaultPrefix: CONFIG.bot.prefix,
+      id: CONFIG.bot.id,
+    });
+  }
 
-bot.login(CONFIG.bot.token).catch((err) => {
-  utils.getLoggerModule('login').error(err);
-});
+  /**
+   * This method must be called before anything else
+   * @returns {Promise<void>}
+   */
+  public async start(): Promise<void> {
+    await this.login(CONFIG.bot.token);
+  }
+}

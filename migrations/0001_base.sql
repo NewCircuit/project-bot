@@ -1,1 +1,1 @@
--- Add migration script here
+create schema if not exists project_bot;

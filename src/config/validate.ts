@@ -22,7 +22,7 @@ export default function validate<T extends Conf>(ref: T, obj: any): void {
       continue;
     }
     if (!(objKeys.includes(key))) {
-      LOGGER.error(
+      console.error(
         `${ref.name} is missing ${key} attribute.`,
       );
       hasMissingAttr = true;

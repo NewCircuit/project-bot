@@ -2,8 +2,8 @@
   "name": "bot-template",
   "version": "1.0.0",
   "description": "A discord bot template",
-  "main": "build/bot.js",
-  "repository": "git@github.com:NewCircuit/bot-template.git",
+  "main": "build/index.js",
+  "repository": "git@github.com:NewCircuit/project-bot.git",
   "author": "Matthew Bakhtiari <dev@mtbk.me>",
   "license": "GPL-3.0",
   "private": true,
@@ -19,15 +19,18 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@sapphire/framework": "^1.0.2",
-    "discord.js": "^12.5.3",
+    "@sapphire/decorators": "next",
+    "@sapphire/framework": "next",
+    "@sapphire/plugin-editable-commands": "next",
+    "@sapphire/plugin-logger": "next",
+    "@sapphire/plugin-subcommands": "next",
+    "discord.js": "^13.1.0",
     "js-yaml": "^4.1.0",
-    "log4js": "^6.3.0",
     "pg": "^8.6.0",
     "postgres-migrations": "^5.3.0"
   },
   "scripts": {
-    "start": "node build/bot.js",
+    "start": "node build/index.js",
     "build": "tsc",
     "dev": "yarn build && yarn start"
   }
