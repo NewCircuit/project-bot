@@ -37,7 +37,7 @@ export class DbManager extends Pool {
 
     super.connect().then((client) => {
       migrate({ client }, './migrations')
-        . then((r) => r);
+        .then((r) => r);
     }).catch((err) => {
       LOGGER.error('Error acquiring client', err.stack);
     });

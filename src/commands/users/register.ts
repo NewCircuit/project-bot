@@ -7,7 +7,7 @@ import { Message, Permissions } from 'discord.js';
   description: 'Register a new user',
   requiredUserPermissions: Permissions.FLAGS.BAN_MEMBERS,
 })
-export default class PingCommand extends Command {
+export default class RegisterCommand extends Command {
   async run(msg: Message) {
     console.log('Unimplemented');
   }

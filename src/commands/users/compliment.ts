@@ -8,7 +8,7 @@ import { Message, Permissions } from 'discord.js';
   aliases: ['rmwarn', 'removewarn'],
   requiredUserPermissions: Permissions.FLAGS.BAN_MEMBERS,
 })
-export default class PingCommand extends Command {
+export default class ComplimentCommand extends Command {
   async run(msg: Message) {
     console.log('Unimplemented');
   }
