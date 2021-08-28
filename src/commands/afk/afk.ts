@@ -7,6 +7,7 @@ import { ApplyOptions } from '@sapphire/decorators';
 import { reply } from '@sapphire/plugin-editable-commands';
 import { Args } from '@sapphire/framework';
 import Time from '../../util/Time';
+import Bot from '../../bot';
 
 @ApplyOptions<SubCommandPluginCommandOptions>({
   aliases: ['inactive'],
@@ -15,8 +16,11 @@ import Time from '../../util/Time';
 })
 export default class AfkCommand extends SubCommandPluginCommand {
   public async start(message: Message, args: Args) {
+    const bot = Bot.getBot();
     const arg = await args.rest('string');
     const date = new Date(arg);
+
+    await bot.usersController.setAfk(message.author.id, date);
 
     return reply(message, `Registered you afk till ${Time.toReadable(date)}`);
   }

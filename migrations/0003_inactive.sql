@@ -3,7 +3,7 @@ create table if not exists project_bot.inactive
     id      uuid    default uuid_generate_v4() not null
         constraint inactive_pk
             primary key,
-    "user"  bigint                             not null
+    user_id  bigint                             not null
         constraint inactive_users_id_fk
             references project_bot.users,
     start   timestamp                          not null,
