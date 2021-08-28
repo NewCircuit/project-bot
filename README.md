@@ -1,9 +1,9 @@
-![CodeQL](https://github.com/NewCircuit/bot-template/actions/workflows/codeql-analysis.yml/badge.svg?style=flat-square)
-![ESLint](https://github.com/NewCircuit/bot-template/actions/workflows/eslint.yml/badge.svg?style=flat-square)
-# Template for Discord bots
+![CodeQL](https://github.com/NewCircuit/project-bot/actions/workflows/codeql-analysis.yml/badge.svg?style=flat-square)
+![ESLint](https://github.com/NewCircuit/project-bot/actions/workflows/eslint.yml/badge.svg?style=flat-square)
+# Discord bot to keep track of projects and afk
 
 ## Requirements
--   [`Node.js`]: To run the project.
+-   [`Node.js`] >=16.6.0: To run the project.
 -   [`PostgreSQL`]: To store persistent data.
 
 
