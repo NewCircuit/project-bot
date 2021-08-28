@@ -5,4 +5,5 @@ async function main() {
   await bot.start();
 }
 
+// eslint-disable-next-line no-console
 main().catch(console.error);
