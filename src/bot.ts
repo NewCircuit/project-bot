@@ -4,15 +4,25 @@ import { CONFIG, LOGGER } from './globals';
 import '@sapphire/plugin-logger/register';
 import '@sapphire/plugin-editable-commands/register';
 import UsersController from './controllers/users';
+import ProjectsController from './controllers/projects';
 
 export default class Bot extends SapphireClient {
+  // user and users are already used by {SapphireClient}
   public readonly usersController: UsersController;
+
+  public readonly projects: ProjectsController;
 
   private static bot: Bot;
 
   constructor() {
     super({
-      intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_MESSAGE_REACTIONS', 'GUILD_MESSAGES'],
+      intents: [
+        'GUILDS',
+        'GUILD_MEMBERS',
+        'GUILD_MESSAGE_REACTIONS',
+        'GUILD_MESSAGES',
+        'DIRECT_MESSAGES',
+      ],
       caseInsensitiveCommands: true,
       logger: {
         instance: LOGGER,
@@ -22,6 +32,7 @@ export default class Bot extends SapphireClient {
     });
 
     this.usersController = new UsersController(this);
+    this.projects = new ProjectsController(this);
 
     Bot.bot = this;
   }
