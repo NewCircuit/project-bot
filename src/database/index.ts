@@ -2,8 +2,11 @@ import { Pool } from 'pg';
 import { migrate } from 'postgres-migrations';
 import { Config } from '../config';
 import { LOGGER } from '../globals';
+import InactiveTable from './tables/inactive';
 
-export class Db extends Pool {
+export class DbManager extends Pool {
+  public readonly inactive: InactiveTable;
+
   constructor(config: Config) {
     super({
       host: config.database.host,
@@ -12,6 +15,8 @@ export class Db extends Pool {
       user: config.database.user,
       password: config.database.password,
     });
+
+    this.inactive = new InactiveTable(this);
 
     super.connect().then((client) => {
       migrate({ client }, './migrations')
