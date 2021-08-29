@@ -1,4 +1,6 @@
 import { SapphireClient } from '@sapphire/framework';
+import { Enumerable } from '@sapphire/decorators';
+
 import { CONFIG, LOGGER } from './globals';
 
 import '@sapphire/plugin-logger/register';
@@ -8,9 +10,11 @@ import ProjectsController from './controllers/projects';
 
 export default class Bot extends SapphireClient {
   // user and users are already used by {SapphireClient}
-  public readonly usersController: UsersController;
+  @Enumerable(false)
+  public readonly usersController: UsersController = new UsersController(this);
 
-  public readonly projects: ProjectsController;
+  @Enumerable(false)
+  public readonly projects: ProjectsController = new ProjectsController(this);
 
   private static bot: Bot;
 
@@ -30,9 +34,6 @@ export default class Bot extends SapphireClient {
       defaultPrefix: CONFIG.bot.prefix,
       id: CONFIG.bot.id,
     });
-
-    this.usersController = new UsersController(this);
-    this.projects = new ProjectsController(this);
 
     Bot.bot = this;
   }

@@ -1,4 +1,4 @@
-create table project_bot.updates
+create table if not exists project_bot.updates
 (
     id         uuid      default uuid_generate_v4() not null
         constraint updates_pk
@@ -13,7 +13,7 @@ create table project_bot.updates
 alter table project_bot.updates
     owner to postgres;
 
-create unique index updates_id_uindex
+create unique index if not exists updates_id_uindex
     on project_bot.updates (id);
 
 
