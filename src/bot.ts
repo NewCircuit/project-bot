@@ -1,4 +1,4 @@
-import { SapphireClient } from '@sapphire/framework';
+import { container, SapphireClient } from '@sapphire/framework';
 import { Enumerable } from '@sapphire/decorators';
 
 import { CONFIG, LOGGER } from './globals';

@@ -4,6 +4,7 @@ bot:
   token: ''
   prefix: ''
   owners: ['']
+  id:
 database:
   user: ''
   password: ''
