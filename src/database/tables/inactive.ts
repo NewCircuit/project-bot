@@ -22,8 +22,8 @@ export default class InactiveTable extends Table {
 
     await this.client.query(
       `INSERT INTO ${this.full} (user_id, start, "end") 
-       VALUES ($1, $2, $3);`,
-      [afk.user, afk.start.valueOf(), afk.end.valueOf()],
+       VALUES ($1, to_timestamp($2), to_timestamp($3));`,
+      [afk.user, afk.start.getTime()/1000, afk.end.getTime()/1000],
     );
 
     return true;
@@ -62,6 +62,17 @@ export default class InactiveTable extends Table {
     return res.rows.map(InactiveTable.parse);
   }
 
+  public async fetchActive(): Promise<AfkStatus[]> {
+    const res = await this.client.query(
+      `SELECT *
+        FROM ${this.full}
+        WHERE active = true`,
+    );
+
+    return res.rows.map(InactiveTable.parse);
+  }
+
+
   /**
    * Get an afk user
    * @param {string} user
@@ -73,10 +84,10 @@ export default class InactiveTable extends Table {
     for (let i = 0; i < res.length; i += 1) {
       const afk = res[i];
       const { active } = afk;
-
       if (active) {
         return afk;
       }
+
     }
 
     return null;

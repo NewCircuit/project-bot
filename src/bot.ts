@@ -7,6 +7,7 @@ import '@sapphire/plugin-logger/register';
 import '@sapphire/plugin-editable-commands/register';
 import UsersController from './controllers/users';
 import ProjectsController from './controllers/projects';
+import { afkCheck } from './commands/afk/afk';
 
 export default class Bot extends SapphireClient {
   // user and users are already used by {SapphireClient}
@@ -43,6 +44,7 @@ export default class Bot extends SapphireClient {
    * @returns {Promise<void>}
    */
   public async start(): Promise<void> {
+    setInterval(async() => {await afkCheck()}, 1800000);
     await this.login(CONFIG.bot.token);
   }
 

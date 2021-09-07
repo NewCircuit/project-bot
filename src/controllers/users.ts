@@ -26,6 +26,19 @@ export default class UsersController extends Controller {
   }
 
   /**
+   * Removes a user's AFK status
+   * @param {string} userID
+   * @returns {Promise<boolean>}
+   */
+  public async delAfk(userID: string): Promise<boolean> {
+    return DB.inactive.remove(userID);
+  }
+
+  public async fetchActive(): Promise<AfkStatus[]> {
+    return DB.inactive.fetchActive()
+  }
+
+  /**
    * Whether a user is AFK
    * @param {string} userID
    * @returns {Promise<boolean>}

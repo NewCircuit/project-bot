@@ -8,7 +8,8 @@ create table if not exists project_bot.inactive
             references project_bot.users,
     start   timestamp                          not null,
     "end"   timestamp,
-    refresh integer default 0                  not null
+    refresh integer default 0                  not null,
+    active  boolean default true               not null
 );
 
 alter table project_bot.inactive
